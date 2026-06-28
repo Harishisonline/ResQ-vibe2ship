@@ -1,0 +1,29 @@
+rules_version = '2';
+
+// ResQ Firestore security rules.
+//
+// All user data lives under users/{uid}/{collection}/{docId}. Each document
+// carries a `userId` field; access is scoped to the signed-in owner only.
+// Deploy with: firebase deploy --only firestore:rules
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isOwner(uid) {
+      return request.auth != null && request.auth.uid == uid;
+    }
+
+    function matchesOwner(uid) {
+      return isOwner(uid) && request.resource.data.userId == uid;
+    }
+
+    match /users/{uid}/{document=**} {
+      // Read: only the owner.
+      allow read: if isOwner(uid);
+      // Create: owner only, and doc must carry their uid.
+      allow create: if matchesOwner(uid);
+      // Update: owner only. Ensure userId cannot be changed to another account.
+      allow update: if isOwner(uid) && request.resource.data.userId == uid;
+      // Delete: owner only.
+      allow delete: if isOwner(uid);
+    }
+  }
+}
