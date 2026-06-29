@@ -57,7 +57,7 @@ Unlike traditional reminder apps, ResQ **acts**, not just notifies.
 
 ## ⚡ Quick Demo
 
-🌐 **Live demo**: deployed on Google Cloud Run · ⏱️ 90-second walkthrough: see [SUBMISSION.md](./SUBMISSION.md)
+🌐 **Live demo**: https://resq-145525775942.us-central1.run.app · ⏱️ 90-second walkthrough: see [SUBMISSION.md](./SUBMISSION.md)
 
 ```bash
 # Run locally (works without API keys — mock mode active)

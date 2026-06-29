@@ -174,9 +174,12 @@ This is the heart of the submission — ResQ uses Google across the stack:
 
 ## 6. Live Demo Link
 
-🌐 **[INSERT DEPLOYMENT URL AFTER DEPLOY TO CLOUD RUN]**
+🌐 **[https://resq-145525775942.us-central1.run.app](https://resq-145525775942.us-central1.run.app)**
 
-Example once deployed:
+Service region: `us-central1` · Container image: `us-central1-docker.pkg.dev/resq-ai/resq/resq:latest` · Port: 8080
+
+Get the URL anytime:
+
 ```bash
 gcloud run services describe resq --region=us-central1 --format="value(status.url)"
 ```
